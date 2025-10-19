@@ -1,10 +1,15 @@
-import './App.css';
-import WeatherInfoToday from './components/wether-info-today/weather-info-today.js';
+import React, { useState } from "react";
+import "./App.css";
+import WeatherInfoToday from "./components/components/weather-info-today.js";
+import WeatherSearch from "./components/components/weather-search.js";
 
 function App() {
+  const [city, setCity] = useState("Wrocław");
+
   return (
     <div className="App">
-      <WeatherInfoToday />
+      <WeatherSearch onSearch={setCity} />
+      <WeatherInfoToday name={city} /> 
     </div>
   );
 }

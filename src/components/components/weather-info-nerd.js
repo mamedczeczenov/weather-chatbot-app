@@ -1,20 +1,14 @@
+import { Button } from "bootstrap";
 import React, { useState, useEffect } from "react";
+import { fetchWeather } from "./weather-fetch-info.js";
 
-const WeatherInfo = ({ name = "Wroclaw" }) => {
+const WeatherInfoNerd = ({ name }) => {
   const [weather, setWeather] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=Wroclaw&units=metric&lang=pl&appid=38a14d862d3cb7f74d954349eea831d3`)
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        if (data.cod !== 200) {
-          setError(data.message);
-        } else {
-          setWeather(data);
-        }
-      })
+      fetchWeather("Wrocław")
+      .then((data) => setWeather(data))
       .catch(err => setError("Błąd połączenia z API"));
   }, [name]);
 
@@ -24,8 +18,6 @@ const WeatherInfo = ({ name = "Wroclaw" }) => {
       style={{
         width: "100%",
         height: "150px",
-        backgroundColor: "#0d6efd",
-        border: "3px solid #66b2ff",
         borderRadius: "8px",
         color: "white",
         fontWeight: "bold",
@@ -38,12 +30,17 @@ const WeatherInfo = ({ name = "Wroclaw" }) => {
 
       {weather && (
         <div className="">
-          {Math.round(weather.main.temp)}°C 🌤️ {weather.name}: <br />
-          {weather.weather[0].description}
+        <ul>
+          <li>💧 Wilgotność: {weather.main.humidity}%</li>
+          <li>🧭 Wiatr: {weather.wind.speed} m/s z kierunku {weather.wind.deg}°</li>
+          <li>📈 Ciśnienie: {weather.main.pressure} hPa</li>
+          <li>📍 Pozycja GPS: {weather.coord.lat.toFixed(2)}°N, {weather.coord.lon.toFixed(2)}°E</li>
+          <li>🆔 widoczność: {weather.visibility} M</li>
+        </ul>
         </div>
       )}
     </div>
-  );
+      );
 };
 
-export default WeatherInfo;
+export default WeatherInfoNerd;
