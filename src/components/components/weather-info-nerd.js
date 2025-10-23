@@ -7,7 +7,7 @@ const WeatherInfoNerd = ({ name }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-      fetchWeather("Wrocław")
+      fetchWeather(name)
       .then((data) => setWeather(data))
       .catch(err => setError("Błąd połączenia z API"));
   }, [name]);

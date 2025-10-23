@@ -40,17 +40,16 @@ const WeatherInfo = ({ name }) => {
           Statystyki dla nerdów 🤓
         </button>
       ):(
-           <button onClick={() => setNerd(false)}>
+        <button onClick={() => setNerd(false)}>
           schowaj 🤓
         </button>
         )
         }
         {showNerd &&(
-          
-        <WeatherInfoNerd />
+        <WeatherInfoNerd name={ name }/>
         
       )}
-
+    
     </div>
 )};
 
