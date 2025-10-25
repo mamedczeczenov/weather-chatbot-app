@@ -33,7 +33,7 @@ const CountryList = ({ onSubmit }) => {
 
   return (
     <div>
-      <button type="button" onClick={loadCountries}>Losuj kraj</button>
+      <button className='btn btn-danger' type="button" onClick={loadCountries}>Losuj kraj</button>
       <p>{country ? `${country.name} (${country.code})` : "Ładowanie..."}</p>
     </div>
   );

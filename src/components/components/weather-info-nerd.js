@@ -14,14 +14,13 @@ const WeatherInfoNerd = ({ name }) => {
 
   return (
     <div
-      className="d-flex justify-content-center align-items-center mb-3"
       style={{
         width: "100%",
         height: "150px",
         borderRadius: "8px",
         color: "white",
         fontWeight: "bold",
-        fontSize: "1.5rem",
+        fontSize: "1rem",
       }}
     >
       {error && <div>Błąd: {error}</div>}

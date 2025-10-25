@@ -1,6 +1,133 @@
-.App{
+
+body {
+  background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  min-height: 100vh;
+  margin: 0;
+}
+#header {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  padding: 20px 0;
+  margin-bottom: 30px;
+}
+
+#header h1 {
+  font-weight: 600;
+  font-size: 2rem;
+  letter-spacing: 1px;
+}
+
+.App {
+  max-width: 800px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  padding: 30px;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.App:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Formularz wyszukiwania */
+.weather-search {
   display: flex;
-  justify-content: left;
-  align-items: left;
-  background-color: pink;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.weather-search input {
+  border-radius: 10px;
+  border: none;
+  padding: 10px 15px;
+  width: 70%;
+  max-width: 300px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.weather-search input:focus {
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.weather-search button {
+  border: none;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.weather-search button:hover {
+  background-color: #0056b3;
+}
+
+.weather-info {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.weather-info h2 {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.weather-info .temp {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.weather-info small {
+  opacity: 0.8;
+}
+
+.country-list {
+  margin-top: 30px;
+  padding: 20px;
+}
+
+.country-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.country-list li {
+  background: rgba(255, 255, 255, 0.1);
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.country-list li:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+@media (max-width: 600px) {
+  #header h1 {
+    font-size: 1.5rem;
+  }
+
+  .App {
+    padding: 20px;
+  }
+
+  .weather-search {
+    flex-direction: column;
+  }
+
+  .weather-search input {
+    width: 100%;
+  }
 }

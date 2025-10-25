@@ -29,18 +29,34 @@ const WeatherInfo = ({ name }) => {
       {!error && !weather && "Ładowanie pogody..."}
 
       {weather && (
-        <div className="">
-          {Math.round(weather.main.temp)}°C 🌤️ {weather.name}: <br />
-          {weather.weather[0].description} odczuwalna {Math.round(weather.main.feels_like)}°C 
-        </div>
+        <div>
+    {(() => {
+        const condition = weather.weather[0].main.toLowerCase();
+
+        let emoji = "🌍";
+        if (condition.includes("clear")) emoji = "☀️";
+        else if (condition.includes("cloud")) emoji = "☁️";
+        else if (condition.includes("rain")) emoji = "🌧️";
+        else if (condition.includes("snow")) emoji = "❄️";
+        else if (condition.includes("thunder")) emoji = "⛈️";
+        else if (condition.includes("mist") || condition.includes("fog")) emoji = "🌫️";
+
+        return (
+          <div>
+            {Math.round(weather.main.temp)}°C {emoji} {weather.name}: <br />
+            {weather.weather[0].description} (odczuwalna {Math.round(weather.main.feels_like)}°C)
+          </div>
+        );
+      })()}
+    </div>
       )}
       
       {!showNerd ?(
-        <button onClick={() => setNerd(true)}>
+        <button className="btn btn-warning" onClick={() => setNerd(true)}>
           Statystyki dla nerdów 🤓
         </button>
       ):(
-        <button onClick={() => setNerd(false)}>
+        <button className="btn btn-warning" onClick={() => setNerd(false)}>
           schowaj 🤓
         </button>
         )

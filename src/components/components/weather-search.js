@@ -18,7 +18,7 @@ const WeatherSearch = ({ onSearch }) => {
         onChange={(e) => setCity(e.target.value)}
         placeholder="Wpisz miasto..."
       />
-      <button type="submit">Zmień miasto</button>
+      <button className="btn btn-success" type="submit">Zmień miasto</button>
     </form>
   );
 };
